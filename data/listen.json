@@ -1,0 +1,75 @@
+{
+ "source": "Vaani (ARTPARK & IISc), CC BY 4.0",
+ "clips": [
+  {
+   "id": "ed43b27f85",
+   "file": "audio/listen/assam_0.mp3",
+   "language": "Assamese",
+   "where": "Hailakandi, Assam",
+   "duration": 7.45
+  },
+  {
+   "id": "f0e4926b3c",
+   "file": "audio/listen/meghalaya_0.mp3",
+   "language": "Garo",
+   "where": "NorthGaroHills, Meghalaya",
+   "duration": 9.59
+  },
+  {
+   "id": "168af1a1ce",
+   "file": "audio/listen/tamilnadu_0.mp3",
+   "language": "Tamil",
+   "where": "Chennai, TamilNadu",
+   "duration": 9.9
+  },
+  {
+   "id": "f0e4926b3c",
+   "file": "audio/listen/westbengal_0.mp3",
+   "language": "Bengali",
+   "where": "Alipurduar, WestBengal",
+   "duration": 9.67
+  },
+  {
+   "id": "168af1a1ce",
+   "file": "audio/listen/kerala_0.mp3",
+   "language": "Malayalam",
+   "where": "Kasaragod, Kerala",
+   "duration": 9.92
+  },
+  {
+   "id": "27a36f7be7",
+   "file": "audio/listen/nagaland_0.mp3",
+   "language": "Ao",
+   "where": "Kohima, Nagaland",
+   "duration": 5.89
+  },
+  {
+   "id": "6bf237149a",
+   "file": "audio/listen/gujarat_0.mp3",
+   "language": "Gujarati",
+   "where": "DevbhoomiDwarka, Gujarat",
+   "duration": 8.98
+  },
+  {
+   "id": "276db77b21",
+   "file": "audio/listen/odisha_1.mp3",
+   "language": "Odia",
+   "where": "Khordha, Odisha",
+   "duration": 6.76
+  },
+  {
+   "id": "0f089a6e2a",
+   "file": "audio/listen/punjab_0.mp3",
+   "language": "Punjabi",
+   "where": "Fazilka, Punjab",
+   "duration": 8.88
+  },
+  {
+   "id": "6202eaedf5",
+   "file": "audio/listen/manipur_0.mp3",
+   "language": "Manipuri",
+   "where": "ImphalWest, Manipur",
+   "duration": 5.14
+  }
+ ]
+}

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lend Your Voice</title>
+<meta name="description" content="Name two everyday things in your language, say a sentence or two with each, and light up your district on the map of India's voices.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&family=Noto+Sans+Bengali:wght@400;500&family=Noto+Sans+Devanagari:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="img/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div id="map" aria-label="Map of India's districts; each light is a district with recorded voices"></div>
+
+<header class="top">
+  <div class="brand">
+    <span class="logo" aria-hidden="true"></span>
+    <div>
+      <div class="brand-name">Lend Your Voice</div>
+      <div class="brand-sub">by <a href="https://spinlabiitg.github.io/" target="_blank" rel="noopener">SPIN Lab, IIT Guwahati</a></div>
+    </div>
+  </div>
+  <div class="stats" id="stats"></div>
+</header>
+
+<section class="hero" id="hero">
+  <h1>Every district has a voice.<br><em>Light up yours.</em></h1>
+  <p>We show you two everyday things. For each, say what you call it in the language you speak at home, then a sentence or two using that word. It takes a minute or two, and each voice adds a light to your district.</p>
+  <div class="hero-actions">
+    <button class="btn primary" data-go="record"><span class="mic-ico" aria-hidden="true"></span>Add your voice</button>
+    <button class="btn ghost" data-go="listen">Listen &amp; check</button>
+  </div>
+  <p class="hint">Or tap a district on the map.</p>
+</section>
+
+<aside class="dcard" id="dcard" hidden></aside>
+
+<aside class="drawer" id="drawer" aria-modal="true" role="dialog" aria-labelledby="drawer-title" hidden>
+  <div class="drawer-head">
+    <div class="steps" id="steps" aria-hidden="true"></div>
+    <button class="icon-btn" id="close" aria-label="Close">✕</button>
+  </div>
+  <div class="drawer-body" id="body"></div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<footer class="foot">
+  <span class="demo-pill">Mock-up<span class="long"> · demo counts · nothing leaves your device</span></span>
+  <span class="foot-right">
+    <a class="lab" href="https://spinlabiitg.github.io/" target="_blank" rel="noopener"><img src="img/spinlab-mark.png" alt="" width="18" height="18">SPIN Lab, IIT Guwahati</a>
+    <button class="link" id="credits-btn">About &amp; credits</button>
+  </span>
+</footer>
+
+<dialog id="credits">
+  <h2>About</h2>
+  <p class="about"><img src="img/spinlab-mark.png" alt="" width="40" height="40">
+    <span><b>Lend Your Voice</b> is built by <a href="https://spinlabiitg.github.io/" target="_blank" rel="noopener">SPIN Lab</a> (Sensing, Perception &amp; INtelligence Lab),
+    Mehta Family School of Data Science and AI, IIT Guwahati, as part of <b>Bahubhashi India</b>, a map of India's spoken languages.</span></p>
+  <p>Questions about the project? Write to <a href="mailto:neerajs@iitg.ac.in">neerajs@iitg.ac.in</a>.</p>
+  <h2>Data &amp; credits</h2>
+  <ul>
+    <li><b>District and state boundaries:</b> INDIAN-SHAPEFILES (datta07), MIT licence. Boundaries are for illustration only.</li>
+    <li><b>Languages per state:</b> Census of India 2011, Table C-16 (state level; current states mapped to their 2011 units).</li>
+    <li><b>Listen samples:</b> Vaani (ARTPARK &amp; IISc), CC BY 4.0.</li>
+    <li><b>Map:</b> MapLibre GL JS.</li>
+    <li id="demo-note"><b>Light counts are made up</b> in this preview.</li>
+  </ul>
+  <p class="note">© 2026 SPIN Lab, IIT Guwahati.</p>
+  <button class="btn primary" onclick="this.closest('dialog').close()">Close</button>
+</dialog>
+
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
+<script src="recorder.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

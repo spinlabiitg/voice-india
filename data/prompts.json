@@ -1,0 +1,125 @@
+{
+  "_note": "Mock-up text. All questions are in English only ({obj} = object name with article, {lang} = chosen language). Pictures: own drawings (scripts/make_pictures.py), chosen with the user. 'read'/'speak' are not used by the record flow (placeholders kept for possible later tasks).",
+  "read": {
+    "English": [
+      "The river was full after three days of rain.",
+      "My grandmother makes the best tea in our village.",
+      "The bus to the market leaves at seven in the morning.",
+      "Children were flying kites on the roof all afternoon.",
+      "Please keep the lamp near the window tonight.",
+      "We waited under the banyan tree until the rain stopped.",
+      "The farmer sold fresh vegetables at the weekly market.",
+      "My brother learned to swim in the village pond."
+    ],
+    "Hindi": [
+      "तीन दिन की बारिश के बाद नदी भर गई थी।",
+      "मेरी दादी हमारे गाँव की सबसे अच्छी चाय बनाती हैं।",
+      "बाज़ार जाने वाली बस सुबह सात बजे निकलती है।",
+      "बच्चे पूरी दोपहर छत पर पतंग उड़ाते रहे।",
+      "आज रात दीया खिड़की के पास रख देना।",
+      "बारिश रुकने तक हम बरगद के पेड़ के नीचे खड़े रहे।",
+      "किसान ने साप्ताहिक हाट में ताज़ी सब्ज़ियाँ बेचीं।",
+      "मेरे भाई ने गाँव के तालाब में तैरना सीखा।"
+    ],
+    "Assamese": [
+      "তিনিদিনীয়া বৰষুণৰ পিছত নদীখন ভৰি পৰিছিল।",
+      "মোৰ আইতাই আমাৰ গাঁৱৰ আটাইতকৈ ভাল চাহ বনায়।",
+      "বজাৰলৈ যোৱা বাছখন পুৱা সাত বজাত যায়।",
+      "ল'ৰা-ছোৱালীবোৰে গোটেই আবেলি ঘৰৰ চালত ঘুড়ি উৰুৱালে।",
+      "বৰষুণ নৰ'লৈকে আমি বৰগছৰ তলত থিয় হৈ আছিলোঁ।",
+      "খেতিয়কজনে সাপ্তাহিক বজাৰত কেঁচা পাচলি বিক্ৰী কৰিলে।"
+    ]
+  },
+  "speak": [
+    {
+      "en": "Tell us about a festival in your area. What happens on that day?",
+      "hi": "अपने इलाके के किसी त्योहार के बारे में बताइए। उस दिन क्या-क्या होता है?"
+    },
+    {
+      "en": "Describe the way from your home to the nearest market.",
+      "hi": "अपने घर से सबसे पास के बाज़ार तक का रास्ता बताइए।"
+    },
+    {
+      "en": "What did you eat today? How is it made?",
+      "hi": "आज आपने क्या खाया? वह कैसे बनता है?"
+    },
+    {
+      "en": "What is the weather like where you are right now?",
+      "hi": "अभी आपके यहाँ मौसम कैसा है?"
+    },
+    {
+      "en": "Tell us about a place near you that visitors should see.",
+      "hi": "आपके पास की कोई ऐसी जगह बताइए जो आने वालों को ज़रूर देखनी चाहिए।"
+    },
+    {
+      "en": "What game did you play as a child? How was it played?",
+      "hi": "बचपन में आप कौन-सा खेल खेलते थे? वह कैसे खेला जाता था?"
+    }
+  ],
+  "pictures": [
+    {
+      "id": "leaf",
+      "file": "img/words/leaf.svg",
+      "en": "leaf",
+      "en_q": "a leaf"
+    },
+    {
+      "id": "bird",
+      "file": "img/words/bird.svg",
+      "en": "bird",
+      "en_q": "a bird"
+    },
+    {
+      "id": "fish",
+      "file": "img/words/fish.svg",
+      "en": "fish",
+      "en_q": "a fish"
+    },
+    {
+      "id": "moon",
+      "file": "img/words/moon.svg",
+      "en": "moon",
+      "en_q": "the moon"
+    },
+    {
+      "id": "sun",
+      "file": "img/words/sun.svg",
+      "en": "sun",
+      "en_q": "the sun"
+    },
+    {
+      "id": "dog",
+      "file": "img/words/dog.svg",
+      "en": "dog",
+      "en_q": "a dog"
+    },
+    {
+      "id": "cat",
+      "file": "img/words/cat.svg",
+      "en": "cat",
+      "en_q": "a cat"
+    },
+    {
+      "id": "eye",
+      "file": "img/words/eye.svg",
+      "en": "eye",
+      "en_q": "an eye"
+    },
+    {
+      "id": "ear",
+      "file": "img/words/ear.svg",
+      "en": "ear",
+      "en_q": "an ear"
+    },
+    {
+      "id": "tree",
+      "file": "img/words/tree.svg",
+      "en": "tree",
+      "en_q": "a tree"
+    }
+  ],
+  "questions": {
+    "word": "What do you call {obj} in {lang}? Just one word.",
+    "sentence": "Now say 1–3 sentences in {lang} using that word."
+  }
+}
