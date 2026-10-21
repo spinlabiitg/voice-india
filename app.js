@@ -124,7 +124,12 @@ async function boot() {
       map.getCanvas().style.cursor = "pointer";
     });
     map.on("mouseleave", "d-fill", () => { setHover(null); map.getCanvas().style.cursor = ""; });
-    map.on("click", "d-fill", (e) => { const p = e.features[0].properties; if (p.selectable) openDistrict(p.id); });
+    map.on("click", "d-fill", (e) => {
+      const p = e.features[0].properties;
+      if (!p.selectable) return;
+      if ($("#drawer").hidden) openDistrict(p.id);
+      else if (S.pickDistrict) S.pickDistrict(p.id); // "Where are you from?" is open: fill it in
+    });
     if (!REDUCED) twinkle();
   });
 }
@@ -187,7 +192,7 @@ function closeDistrict() { $("#dcard").hidden = true; select(null); $("#hero").c
 /* ===================== drawer ===================== */
 const body = () => $("#body");
 function openDrawer(steps, cur) {
-  stopLoops();
+  stopLoops(); S.pickDistrict = null;
   $("#hero").classList.add("away"); $("#dcard").hidden = true;
   $("#drawer").hidden = false;
   $("#steps").innerHTML = steps ? Array.from({ length: steps }, (_, i) => `<i class="${i <= cur ? "on" : ""}"></i>`).join("") : "";
@@ -220,6 +225,7 @@ function stepWhere() {
     <div class="field"><label for="f-dist">District</label><select id="f-dist"></select></div>
     <div class="field"><span class="lbl">Language you'll speak in</span><div class="seg" id="f-lang"></div>
       <input type="text" id="f-lang-other" placeholder="Type your language" style="margin-top:8px" hidden></div>
+    ${innerWidth >= 720 ? `<p class="note">Tip: you can also click your district on the map.</p>` : ""}
     <div class="nav"><button class="btn primary" id="next" disabled>Next</button></div>`;
   const fs = $("#f-state"), fd = $("#f-dist"), fl = $("#f-lang"), fo = $("#f-lang-other"), next = $("#next");
   const fillDist = () => {
@@ -232,8 +238,29 @@ function stepWhere() {
     validate();
   };
   const validate = () => { next.disabled = !(fd.value && S.language); };
-  fs.onchange = () => { S.district = null; fillDist(); };
-  fd.onchange = () => { const d = places.states[fs.value].districts.find((x) => x.id === fd.value); S.district = d ? { ...d, state: fs.value } : null; if (d) { select(d.id); flyTo(d.id); } validate(); };
+  let prevState = fs.value;
+  fs.onchange = (e, fly = true) => {
+    S.district = null; select(null); if (fly) flyToState(fs.value);
+    // a language picked from the previous state's list doesn't carry over unless the new state lists it too;
+    // one the person typed under "Other…" stays
+    const listed = (st) => (places.states[st]?.languages.slice(0, 9) || []).concat("English").includes(S.language);
+    if (S.language && listed(prevState) && !listed(fs.value)) { S.language = ""; fo.value = ""; fo.hidden = true; }
+    prevState = fs.value;
+    fillDist();
+  };
+  fd.onchange = (e, fly = true) => {
+    const d = places.states[fs.value].districts.find((x) => x.id === fd.value);
+    S.district = d ? { ...d, state: fs.value } : null;
+    if (d) { select(d.id); if (fly) flyTo(d.id); }
+    validate();
+  };
+  // a click on the map while this step is open sets state + district (the map stays where it is)
+  S.pickDistrict = (id) => {
+    const f = lightOf(id); if (!f) return;
+    if (fs.value !== f.properties.state) { fs.value = f.properties.state; fs.onchange(null, false); }
+    fd.value = id; fd.onchange(null, false);
+    [fs, fd].forEach((el) => { el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash"); });
+  };
   fl.onclick = (e) => {
     const b = e.target.closest("button"); if (!b) return;
     fl.querySelectorAll("button").forEach((x) => x.classList.toggle("on", x === b));
@@ -244,6 +271,12 @@ function stepWhere() {
   next.onclick = () => { store.set("district", S.district); store.set("language", S.language); stepConsent(); };
   if (st) fillDist();
   if (S.district) { select(S.district.id); flyTo(S.district.id); }
+}
+function flyToState(state) {
+  const pts = lights.features.filter((f) => f.properties.state === state).map((f) => f.geometry.coordinates);
+  if (!map || !pts.length) return;
+  const b = pts.reduce((bb, c) => bb.extend(c), new maplibregl.LngLatBounds(pts[0], pts[0]));
+  map.fitBounds(b, { padding: innerWidth < 720 ? 40 : { top: 80, bottom: 60, left: 60, right: 520 }, maxZoom: 7, duration: 700 });
 }
 function flyTo(id) { const f = lightOf(id); if (f && map) map.easeTo({ center: f.geometry.coordinates, zoom: 5.4, padding: innerWidth < 720 ? {} : { right: 460 }, duration: 700 }); }
 

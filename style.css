@@ -100,6 +100,8 @@ select, input[type=text], textarea { width: 100%; background: var(--surface); co
   border-radius: 12px; padding: 11px 12px; font: inherit; }
 textarea { min-height: 96px; resize: vertical; font-family: var(--script); font-size: 17px; }
 select:focus, input:focus, textarea:focus, .btn:focus-visible, .icon-btn:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 2px; }
+select.flash { animation: flash 1.2s ease; }
+@keyframes flash { 0%, 40% { border-color: var(--gold-2); box-shadow: 0 0 0 3px rgba(245,158,43,.25); } }
 .seg { display: flex; flex-wrap: wrap; gap: 6px; }
 .seg button { border: 1px solid var(--line); background: var(--soft); border-radius: 999px; padding: 7px 13px; font-size: 13px; }
 .seg button.on { background: rgba(255,195,92,.18); border-color: var(--gold-2); color: var(--accent); }
