@@ -292,7 +292,6 @@ function stepConsent() {
     </ul>
     <label class="check"><input type="checkbox" id="c-age"> I am 18 or older.</label>
     <label class="check"><input type="checkbox" id="c-ok"> I agree to my recordings being shared under the CC BY 4.0 licence.</label>
-    <p class="note">Draft wording — the final text will follow IITG ethics committee approval and be shown in your language.</p>
     <div class="nav"><button class="btn" id="back">Back</button><button class="btn primary" id="next" disabled>I agree</button></div>`;
   const upd = () => { $("#next").disabled = !($("#c-age").checked && $("#c-ok").checked); };
   $("#c-age").onchange = $("#c-ok").onchange = upd;
